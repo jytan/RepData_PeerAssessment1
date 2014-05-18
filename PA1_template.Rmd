@@ -36,18 +36,18 @@ Giving a time series plot of the 5-minute interval (x-axis) and the average numb
 
 ```{r part3}
 avesteps <- tapply(data$steps,data$interval,mean,na.rm=T)
-plot(names(avesteps),avesteps,type="l")
-ans <- names(avesteps[which.max(avesteps)])
+plot(names(avesteps),avesteps,type="l",xlab="Time (24hr format)",ylab="Number of steps")
+names(avesteps[which.max(avesteps)])
 ```
 
-The 5-minute interval, on average across all the days in the dataset, which contains the maximum number of steps is `r ans`.
+The 5-minute interval, on average across all the days in the dataset, which contains the maximum number of steps is `r names(avesteps[which.max(avesteps)])`.
 
 ## Imputing missing values
 
 The code below calculate and reports the total number of missing values in the dataset (i.e. the total number of rows with NAs). Then it creates a new dataset which replaces the missing values with the number of steps for that 5 min interval averaged across all days. 
 
 ```{r part4.1}
-nrna <- sum(is.na(data$steps))
+sum(is.na(data$steps))
 filleddata <- data
 for (x in 1:length(filleddata$steps)){
     if(is.na(filleddata$steps[x])){
@@ -57,7 +57,7 @@ for (x in 1:length(filleddata$steps)){
 filleddailysteps <- tapply(filleddata$steps,filleddata$date, sum, na.rm=TRUE)
 ```
 
-The total number of missing rows in the original dataset is `r nrna`.
+The total number of missing rows in the original dataset is `r sum(is.na(data$steps))`.
 
 Plotting a histogram of the total number of steps taken each day with the processed dataset (filled in NA rows).
 

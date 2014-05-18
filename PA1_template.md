@@ -67,13 +67,17 @@ Giving a time series plot of the 5-minute interval (x-axis) and the average numb
 
 ```r
 avesteps <- tapply(data$steps, data$interval, mean, na.rm = T)
-plot(names(avesteps), avesteps, type = "l")
+plot(names(avesteps), avesteps, type = "l", xlab = "Time (24hr format)", ylab = "Number of steps")
 ```
 
 ![plot of chunk part3](figure/part3.png) 
 
 ```r
-ans <- names(avesteps[which.max(avesteps)])
+names(avesteps[which.max(avesteps)])
+```
+
+```
+## [1] "835"
 ```
 
 
@@ -85,7 +89,14 @@ The code below calculate and reports the total number of missing values in the d
 
 
 ```r
-nrna <- sum(is.na(data$steps))
+sum(is.na(data$steps))
+```
+
+```
+## [1] 2304
+```
+
+```r
 filleddata <- data
 for (x in 1:length(filleddata$steps)) {
     if (is.na(filleddata$steps[x])) {
