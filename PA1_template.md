@@ -1,6 +1,6 @@
 Reproducible Research: Peer Assessment 1
 =======================================
-Written by Junyan Tan, 17/05/2014
+Written by Junyan Tan, 17/05/2014 
 
 Setting global options, setting all R code to be echoed and output to be cached.
 
@@ -159,3 +159,6 @@ xyplot(steps ~ interval | weekvar, data = newdat, type = "l", layout = c(1,
 
 ![plot of chunk part5](figure/part5.png) 
 
+
+
+The End

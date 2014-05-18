@@ -1,6 +1,6 @@
 Reproducible Research: Peer Assessment 1
 =======================================
-Written by Junyan Tan, 17/05/2014
+Written by Junyan Tan, 17/05/2014 
 
 Setting global options, setting all R code to be echoed and output to be cached.
 ```{r setoptions, echo = TRUE}
@@ -85,3 +85,6 @@ newdat <- aggregate(steps~weekvar+interval,data=filleddata,mean)
 newdat$interval <- as.numeric(as.character(newdat$interval))
 xyplot(steps~interval|weekvar, data=newdat,type='l',layout=c(1,2),ylab="Number of steps",xlab="Time (24hrs format)")
 ```
+
+
+The End
