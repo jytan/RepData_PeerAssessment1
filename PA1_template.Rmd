@@ -24,11 +24,11 @@ The code below makes a histogram of the total number of steps taken each day as 
 ```{r part2}
 dailysteps <- tapply(data$steps,data$date, sum, na.rm=TRUE)
 hist(dailysteps,main="Histogram of total number of steps taken per day",xlab="Total number of steps taken per day")
-mean(dailysteps)
-median(dailysteps)
+mean(dailysteps,na.rm=TRUE)
+median(dailysteps,na.rm=TRUE)
 ```
 
-The mean total number of steps taken per day is `r mean(dailysteps)` and the median total number of steps taken per day is `r median(dailysteps)`.
+The mean total number of steps taken per day is `r mean(dailysteps,na.rm=TRUE)` and the median total number of steps taken per day is `r median(dailysteps,na.rm=TRUE)`.
 
 ## What is the average daily activity pattern?
 
@@ -55,6 +55,7 @@ for (x in 1:length(filleddata$steps)){
     } 
 }
 filleddailysteps <- tapply(filleddata$steps,filleddata$date, sum, na.rm=TRUE)
+sum(is.na(filleddata$steps)) # Checking to see if all missing rows are filled in
 ```
 
 The total number of missing rows in the original dataset is `r sum(is.na(data$steps))`.
@@ -67,7 +68,7 @@ mean(filleddailysteps)
 median(filleddailysteps)
 ```
 
-So for the processed dataset, the mean total number of steps taken per day is `r mean(filleddailysteps)` and the median total number of steps taken per day is `r median(filleddailysteps)`. From part 1 of the assignment, the mean total number of steps taken per day is `r mean(dailysteps)` and the median total number of steps taken per day is `r median(dailysteps)`. The mean and median for the processed dataset is higher than that of the original dataset because replaced values are generally greater than 0 so it would shift estimates of the total daily number of steps up compared to estimates from the original dataset.
+So for the processed dataset, the mean total number of steps taken per day is `r mean(filleddailysteps)` and the median total number of steps taken per day is `r median(filleddailysteps)`. From part 1 of the assignment, the mean total number of steps taken per day is `r mean(dailysteps, na.rm=TRUE)` and the median total number of steps taken per day is `r median(dailysteps)`. The mean and median for the processed dataset is higher than that of the original dataset because replaced values are generally greater than 0 so it would shift estimates of the total daily number of steps up compared to estimates from the original dataset.
 
 ## Are there differences in activity patterns between weekdays and weekends?
 

@@ -42,7 +42,7 @@ hist(dailysteps, main = "Histogram of total number of steps taken per day",
 ![plot of chunk part2](figure/part2.png) 
 
 ```r
-mean(dailysteps)
+mean(dailysteps, na.rm = TRUE)
 ```
 
 ```
@@ -50,7 +50,7 @@ mean(dailysteps)
 ```
 
 ```r
-median(dailysteps)
+median(dailysteps, na.rm = TRUE)
 ```
 
 ```
@@ -104,6 +104,11 @@ for (x in 1:length(filleddata$steps)) {
     }
 }
 filleddailysteps <- tapply(filleddata$steps, filleddata$date, sum, na.rm = TRUE)
+sum(is.na(filleddata$steps))  # Checking to see if all missing rows are filled in
+```
+
+```
+## [1] 0
 ```
 
 
